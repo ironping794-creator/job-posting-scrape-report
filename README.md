@@ -16,7 +16,8 @@ Use this skill to deliver a verified recruitment-data pipeline, not just a crawl
 2. Build or adapt the collector.
    - Start with a small probe: one city, one keyword, one page.
    - Confirm fields before scaling: title, company, city, salary, job type, requirements, publish time, detail URL, source platform.
-   - Add polite paging, retry, de-duplication by URL/title/company/city, and progress logging.
+   - Use `scripts/collect_paginated_jobs.py` for public JSON APIs when possible. It probes page 1, estimates runtime, asks how many postings to collect, then automatically walks pages with a polite delay.
+   - Add retry, de-duplication by URL/title/company/city, and progress logging for platform-specific collectors.
 3. Clean and normalize the data.
    - Normalize city names, salary text, date text, job type, and keyword labels.
    - Preserve raw columns when useful; add normalized columns instead of destroying evidence.
@@ -56,6 +57,38 @@ Recommended derived columns:
 When source fields differ, create a small mapping table in the report so the transformation is auditable.
 
 ## Script Usage
+
+For paginated JSON APIs:
+
+```bash
+python scripts/collect_paginated_jobs.py \
+  --url "https://example.com/api/jobs/page-list" \
+  --method POST \
+  --payload '{"cityId":35,"filters":[]}' \
+  --headers '{"source":"24"}' \
+  --page-param page \
+  --size-param size \
+  --records-path data.records \
+  --total-path data.total \
+  --pages-path data.pages \
+  --page-size 50 \
+  --out-dir outputs/example-jobs
+```
+
+If `--limit` is omitted in an interactive terminal, the script asks whether to collect:
+
+- `all`
+- `half`
+- a specific number such as `200`
+
+It prints an estimated runtime before fetching the remaining pages. In non-interactive runs, pass `--limit all`, `--limit half`, `--limit 200`, or use `--max-pages` for cautious probes.
+
+The collector writes:
+
+- `raw_pages.json`
+- `records.json`
+- `records.csv` when records are JSON objects
+- `summary.json`
 
 For CSV input:
 
