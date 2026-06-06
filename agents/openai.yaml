@@ -1,0 +1,7 @@
+interface:
+  display_name: "Job Posting Scrape Report"
+  short_description: "Scrape, clean, filter, and report job postings"
+  default_prompt: "Use $job-posting-scrape-report to collect recruitment postings, clean and filter by city, salary, and keywords, then output a structured table and distribution report."
+
+policy:
+  allow_implicit_invocation: true
