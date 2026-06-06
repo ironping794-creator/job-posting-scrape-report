@@ -96,10 +96,22 @@ For CSV input:
 python scripts/clean_filter_jobs.py input.csv --out-dir outputs/jobs --cities "上海,北京,深圳" --keywords "AI,大模型,数据分析" --salary-min 8000
 ```
 
-The script writes:
+The script writes (default):
 
 - `cleaned_jobs.csv`
 - `filtered_jobs.csv`
+- `job_distribution.md`
+
+Add `--xlsx` to export formatted `.xlsx` files with clickable URLs and auto-sized columns:
+
+```bash
+python scripts/clean_filter_jobs.py input.csv --xlsx --out-dir outputs/jobs --cities "上海,北京,深圳" --keywords "AI,大模型,数据分析" --salary-min 8000
+```
+
+This writes:
+
+- `cleaned_jobs.xlsx`
+- `filtered_jobs.xlsx`
 - `job_distribution.md`
 
 Patch the script for platform-specific salary formats or source schemas instead of adding ad hoc notebook code.

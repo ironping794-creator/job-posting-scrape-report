@@ -17,6 +17,8 @@ import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
+import openpyxl
+from openpyxl.styles import Font, Alignment, PatternFill
 from typing import Any
 from urllib import error, parse, request
 
@@ -280,6 +282,8 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
     (out_dir / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
     if records and all(isinstance(record, dict) for record in records):
         records_to_csv(out_dir / "records.csv", records)
+        if args.xlsx:
+            records_to_xlsx(out_dir / "records.xlsx", records)
     print(json.dumps(summary, ensure_ascii=False, indent=2))
     return summary
 
@@ -324,6 +328,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--max-pages", type=int, default=None, help="Hard page cap for unknown totals or cautious probes.")
     parser.add_argument("--delay", type=float, default=0.5, help="Delay between page requests in seconds.")
     parser.add_argument("--timeout", type=float, default=30)
+    parser.add_argument("--xlsx", action="store_true", help="Export records as .xlsx instead of bare .csv")
     parser.add_argument("--out-dir", default="outputs/collected_jobs")
     return parser
 
