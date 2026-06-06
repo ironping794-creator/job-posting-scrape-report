@@ -36,6 +36,9 @@
 - Salary parsing limitations:
 - Duplicate or stale posting risk:
 
-## Resume Bullet
+## Evidence Notes
 
-Used Codex to generate crawler scripts, collect 2000+ recruitment postings, clean and filter data by city/salary/keyword, and deliver a structured spreadsheet plus job-distribution statistics report within 2 hours.
+- Verified counts:
+- User-provided or historical counts:
+- Verified delivery time:
+- Unverified claims to avoid:

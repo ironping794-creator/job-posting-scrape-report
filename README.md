@@ -1,6 +1,6 @@
 ---
 name: job-posting-scrape-report
-description: Generate or adapt job-platform crawlers, collect large batches of recruitment postings, clean and normalize job data, filter by city/salary/keyword, and produce structured spreadsheets plus job-distribution reports. Use when Codex is asked to turn a recruitment data collection project into a repeatable workflow, scrape 100s-2000+ job posts, analyze campus/intern/full-time listings, or document a data-scraping job-search project experience.
+description: Generate or adapt job-platform crawlers, collect batches of recruitment postings, clean and normalize job data, filter by city/salary/keyword, and produce structured spreadsheets plus job-distribution reports. Use when Codex is asked to turn a recruitment data collection workflow into a repeatable pipeline, scrape job posts, analyze campus/intern/full-time listings, or document a job-data workflow with evidence-bound claims.
 ---
 
 # Job Posting Scrape Report
@@ -84,8 +84,4 @@ Use concrete numbers:
 - keyword distribution
 - source/platform caveats
 
-If the user frames the work as a resume/project experience, convert the evidence into a concise accomplishment statement:
-
-> Used Codex to generate crawler scripts, collected 2000+ recruitment postings, completed cleaning and multi-dimensional filtering by city/salary/keyword, and delivered a structured spreadsheet plus job-distribution statistics report within 2 hours.
-
-Avoid overstating automation. If counts, timing, or platform coverage were not verified in the current run, mark them as user-provided or historical.
+Keep claims evidence-bound. If counts, timing, source coverage, or automation scope were not verified in the current run, mark them as user-provided, historical, or unverified instead of turning them into factual claims.
